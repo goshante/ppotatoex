@@ -1,0 +1,14 @@
+{
+  "creativetab.potato_tab": "Potato",
+
+  "item.ppotatoex.item_gpp": "Great Poisonous Potato",
+  "item.ppotatoex.item_ggp": "Golden Great Potato",
+  "item.ppotatoex.item_np": "Netherite Potato",
+  "item.ppotatoex.item_npp": "Netherite Potato Potion",
+  "item.ppotatoex.item_bopp": "Bottle of Potato Poison",
+  "item.ppotatoex.item_posv": "Potion of Strength V",
+  "item.ppotatoex.item_eposv": "Explosive Potion of Strength V",
+
+  "block.ppotatoex.potato_block": "Potato Block",
+  "block.ppotatoex.ppotato_block": "Poisonous Potato Block"
+}

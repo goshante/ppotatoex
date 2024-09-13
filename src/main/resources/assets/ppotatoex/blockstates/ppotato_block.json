@@ -1,0 +1,9 @@
+{
+  "variants":
+  {
+    "":
+    {
+      "model": "ppotatoex:block/ppotato_block"
+    }
+  }
+}

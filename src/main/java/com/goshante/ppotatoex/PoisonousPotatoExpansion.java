@@ -1,5 +1,7 @@
 package com.goshante.ppotatoex;
 
+import com.goshante.ppotatoex.block.ModBlocks;
+import com.goshante.ppotatoex.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -40,14 +42,16 @@ public class PoisonousPotatoExpansion
     public PoisonousPotatoExpansion()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModCreativeTabs.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
+
         modEventBus.addListener(this::commonSetup);
-        // Register ourselves for server and other game events we are interested in
+
         MinecraftForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
-
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
@@ -75,7 +79,7 @@ public class PoisonousPotatoExpansion
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-    
+
         }
     }
 }
