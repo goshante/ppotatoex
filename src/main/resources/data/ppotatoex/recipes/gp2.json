@@ -1,10 +1,10 @@
 {
-  "type": "minecraft:smelting",
+  "type": "minecraft:blasting",
   "ingredient":
   {
     "item": "ppotatoex:item_gpp"
   },
   "result": "ppotatoex:item_gp",
   "experience": 5,
-  "cookingtime": 300
+  "cookingtime": 75
 }

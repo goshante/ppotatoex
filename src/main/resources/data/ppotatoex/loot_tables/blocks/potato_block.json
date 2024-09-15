@@ -16,7 +16,8 @@
           "type": "minecraft:item",
           "name": "ppotatoex:potato_block"
         }
-      ]
+      ],
+      "rolls": 1.0
     }
   ],
   "random_sequence": "ppotatoex:blocks/potato_block"
