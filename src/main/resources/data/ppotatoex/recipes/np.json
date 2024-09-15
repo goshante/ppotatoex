@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+  [
+    " N ",
+    "N#N",
+    " N "
+  ],
+
+  "key":
+  {
+    "#":
+    {
+      "item": "ppotatoex:item_ggp"
+    },
+    "N":
+    {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result":
+  {
+    "item": "ppotatoex:item_np",
+    "count": 1
+  }
+}

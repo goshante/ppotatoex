@@ -2,13 +2,107 @@
   "creativetab.potato_tab": "Potato",
 
   "item.ppotatoex.item_gpp": "Great Poisonous Potato",
+  "item.ppotatoex.item_gp": "Great Potato",
   "item.ppotatoex.item_ggp": "Golden Great Potato",
   "item.ppotatoex.item_np": "Netherite Potato",
-  "item.ppotatoex.item_npp": "Netherite Potato Potion",
   "item.ppotatoex.item_bopp": "Bottle of Potato Poison",
-  "item.ppotatoex.item_posv": "Potion of Strength V",
-  "item.ppotatoex.item_eposv": "Explosive Potion of Strength V",
+  "item.ppotatoex.item_ps": "Potato Shard",
+
+  "item.minecraft.potion.effect.potion_npp": "Potion of Netherite Potato",
+  "item.minecraft.splash_potion.effect.potion_npp": "Splash Potion of Netherite Potato",
+  "item.minecraft.lingering_potion.effect.potion_npp": "Lingering Potion of Netherite Potato",
+  "item.minecraft.potion.effect.potion_npp_l": "Potion of Netherite Potato",
+  "item.minecraft.splash_potion.effect.potion_npp_l": "Splash Potion of Netherite Potato",
+  "item.minecraft.lingering_potion.effect.potion_npp_l": "Lingering Potion of Netherite Potato",
+  "item.minecraft.potion.effect.potion_npp_s": "Potion of Netherite Potato",
+  "item.minecraft.splash_potion.effect.potion_npp_s": "Splash Potion of Netherite Potato",
+  "item.minecraft.lingering_potion.effect.potion_npp_s": "Lingering Potion of Netherite Potato",
+
+  "item.minecraft.potion.effect.potion_re": "Potion of Reflection",
+  "item.minecraft.splash_potion.effect.potion_re": "Splash Potion of Reflection",
+  "item.minecraft.lingering_potion.effect.potion_re": "Lingering Potion of Reflection",
+  "item.minecraft.potion.effect.potion_re_l": "Potion of Reflection",
+  "item.minecraft.splash_potion.effect.potion_re_l": "Splash Potion of Reflection",
+  "item.minecraft.lingering_potion.effect.potion_re_l": "Lingering Potion of Reflection",
+
+  "item.minecraft.potion.effect.potion_dp": "Potion of Darkness",
+  "item.minecraft.splash_potion.effect.potion_dp": "Splash Potion of Darkness",
+  "item.minecraft.lingering_potion.effect.potion_dp": "Lingering Potion of Darkness",
+  "item.minecraft.potion.effect.potion_dp_l": "Potion of Darkness",
+  "item.minecraft.splash_potion.effect.potion_dp_l": "Splash Potion of Darkness",
+  "item.minecraft.lingering_potion.effect.potion_dp_l": "Lingering Potion of Darkness",
+
+  "item.minecraft.potion.effect.potion_hap": "Potion of Haste",
+  "item.minecraft.splash_potion.effect.potion_hap": "Potion of Haste",
+  "item.minecraft.lingering_potion.effect.potion_hap": "Potion of Haste",
+  "item.minecraft.potion.effect.potion_hap_l": "Potion of Haste",
+  "item.minecraft.splash_potion.effect.potion_hap_l": "Potion of Haste",
+  "item.minecraft.lingering_potion.effect.potion_hap_l": "Potion of Haste",
+  "item.minecraft.potion.effect.potion_hap_s": "Potion of Haste",
+  "item.minecraft.splash_potion.effect.potion_hap_s": "Potion of Haste",
+  "item.minecraft.lingering_potion.effect.potion_hap_s": "Potion of Haste",
+
+  "item.minecraft.potion.effect.potion_espp": "Extra Strong Potion of Poison",
+  "item.minecraft.splash_potion.effect.potion_espp": "Splash Extra Strong Potion of Poison",
+  "item.minecraft.lingering_potion.effect.potion_espp": "Lingering Extra Strong Potion of Poison",
+
+  "item.minecraft.potion.effect.potion_essp": "Extra Strong Potion of Strength",
+  "item.minecraft.splash_potion.effect.potion_essp": "Splash Extra Strong Potion of Strength",
+  "item.minecraft.lingering_potion.effect.potion_essp": "Lingering Extra Strong Potion of Strength",
+
+  "item.minecraft.potion.effect.potion_esswp": "Extra Strong Potion of Swiftness",
+  "item.minecraft.splash_potion.effect.potion_esswp": "Splash Extra Strong Potion of Swiftness",
+  "item.minecraft.lingering_potion.effect.potion_esswp": "Lingering Extra Strong Potion of Swiftness",
+
+  "item.minecraft.potion.effect.potion_esrp": "Extra Strong Potion of Regeneration",
+  "item.minecraft.splash_potion.effect.potion_esrp": "Splash Extra Strong Potion of Regeneration",
+  "item.minecraft.lingering_potion.effect.potion_esrp": "Lingering Extra Strong Potion of Regeneration",
+
+  "item.minecraft.potion.effect.potion_eshp": "Extra Strong Potion of Harming",
+  "item.minecraft.splash_potion.effect.potion_eshp": "Splash Extra Strong Potion of Harming",
+  "item.minecraft.lingering_potion.effect.potion_eshp": "Lingering Extra Strong Potion of Harming",
+
+  "item.minecraft.potion.effect.potion_eshep": "Extra Strong Potion of Healing",
+  "item.minecraft.splash_potion.effect.potion_eshep": "Splash Extra Strong Potion of Healing",
+  "item.minecraft.lingering_potion.effect.potion_eshep": "Lingering Extra Strong Potion of Healing",
+
+  "item.minecraft.potion.effect.potion_eslp": "Extra Strong Potion of Leaping",
+  "item.minecraft.splash_potion.effect.potion_eslp": "Splash Extra Strong Potion of Leaping",
+  "item.minecraft.lingering_potion.effect.potion_eslp": "Lingering Extra Strong Potion of Leaping",
+
+  "item.minecraft.tipped_arrow.effect.potion_npp": "Arrow of Netherite Potato",
+  "item.minecraft.tipped_arrow.effect.potion_npp_l": "Arrow of Netherite Potato",
+  "item.minecraft.tipped_arrow.effect.potion_npp_s": "Arrow of Netherite Potato",
+
+  "item.minecraft.tipped_arrow.effect.potion_re": "Arrow of Reflection",
+  "item.minecraft.tipped_arrow.effect.potion_re_l": "Arrow of Reflection",
+
+  "item.minecraft.tipped_arrow.effect.potion_dp": "Arrow of Darkness",
+  "item.minecraft.tipped_arrow.effect.potion_dp_l": "Arrow of Darkness",
+
+  "item.minecraft.tipped_arrow.effect.potion_hap": "Arrow of Haste",
+  "item.minecraft.tipped_arrow.effect.potion_hap_l": "Arrow of Haste",
+  "item.minecraft.tipped_arrow.effect.potion_hap_s": "Arrow of Haste",
+
+  "item.minecraft.tipped_arrow.effect.potion_espp": "Arrow of Extra Strong Poison",
+  "item.minecraft.tipped_arrow.effect.potion_essp": "Arrow of Extra Strong Strength",
+  "item.minecraft.tipped_arrow.effect.potion_esswp": "Arrow of Extra Strong Swiftness",
+  "item.minecraft.tipped_arrow.effect.potion_esrp": "Arrow of Extra Strong Regeneration",
+  "item.minecraft.tipped_arrow.effect.potion_eshp": "Arrow of Extra Strong Harming",
+  "item.minecraft.tipped_arrow.effect.potion_eshep": "Arrow of Extra Strong Healing",
+  "item.minecraft.tipped_arrow.effect.potion_eslp": "Arrow of Extra Strong Leaping",
+
+  "effect.ppotatoex.effect_pr": "Potato Reinforcement",
+  "effect.ppotatoex.effect_reflection": "Reflection",
 
   "block.ppotatoex.potato_block": "Potato Block",
-  "block.ppotatoex.ppotato_block": "Poisonous Potato Block"
+  "block.ppotatoex.ppotato_block": "Poisonous Potato Block",
+
+  "tooltip.ppotatoex.item_np.tooltip": "The Legendary potato imbued with a power of a Netherite.",
+  "tooltip.ppotatoex.item_bopp.tooltip": "Useful in crafting, potion brewing or you can just drink it.",
+  "tooltip.ppotatoex.item_ps.tooltip": "What a stupidity...",
+
+  "death.attack.reflect": "%1$s died by getting all his damage back from %2$s",
+  "death.attack.reflect.player": "%1$s died by getting all his damage back from %2$s",
+  "death.attack.reflect.item": "%1$s died by getting all his damage back from %2$s who was using %3$s"
 }

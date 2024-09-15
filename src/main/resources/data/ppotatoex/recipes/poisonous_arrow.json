@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+
+  "pattern":
+  [
+    " ^ ",
+    "^#^",
+    " ^ "
+  ],
+
+  "key":
+  {
+    "#":
+    {
+      "item": "ppotatoex:item_bopp"
+    },
+    "^":
+    {
+      "item": "minecraft:arrow"
+    }
+  },
+
+  "result":
+  {
+    "item": "minecraft:tipped_arrow",
+    "count": 4,
+    "nbt": "{Potion:\"minecraft:poison\"}"
+  }
+}

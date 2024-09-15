@@ -1,12 +1,111 @@
 {
   "creativetab.potato_tab": "Картофель",
+
   "item.ppotatoex.item_gpp": "Великий ядовитый картофель",
+  "item.ppotatoex.item_gp": "Великий картофель",
   "item.ppotatoex.item_ggp": "Золотой великий картофель",
   "item.ppotatoex.item_np": "Незеритовый картофель",
-  "item.ppotatoex.item_npp": "Зелье из незеритового картофеля",
   "item.ppotatoex.item_bopp": "Пузырёк с картофельным ядом",
-  "item.ppotatoex.item_posv": "Зелье силы V",
-  "item.ppotatoex.item_eposv": "Взрывное зелье силы V",
+  "item.ppotatoex.item_ps": "Картофельный Осколок",
+
+  "item.minecraft.potion.effect.potion_npp": "Зелье из Незеритового картофеля",
+  "item.minecraft.splash_potion.effect.potion_npp": "Взрывное зелье из Незеритового картофеля",
+  "item.minecraft.lingering_potion.effect.potion_npp": "Туманное зелье из Незеритового картофеля",
+  "item.minecraft.potion.effect.potion_npp_l": "Зелье из незеритового картофеля",
+  "item.minecraft.splash_potion.effect.potion_npp_l": "Взрывное зелье из незеритового картофеля",
+  "item.minecraft.lingering_potion.effect.potion_npp_l": "Туманное зелье из незеритового картофеля",
+  "item.minecraft.potion.effect.potion_npp_s": "Зелье из незеритового картофеля",
+  "item.minecraft.splash_potion.effect.potion_npp_s": "Взрывное зелье из незеритового картофеля",
+  "item.minecraft.lingering_potion.effect.potion_npp_s": "Туманное зелье из незеритового картофеля",
+
+  "item.minecraft.potion.effect.potion_re": "Зелье отражения",
+  "item.minecraft.splash_potion.effect.potion_re": "Взрывное зелье отражения",
+  "item.minecraft.lingering_potion.effect.potion_re": "Туманное зелье отражения",
+  "item.minecraft.potion.effect.potion_re_l": "Зелье отражения",
+  "item.minecraft.splash_potion.effect.potion_re_l": "Взрывное зелье отражения",
+  "item.minecraft.lingering_potion.effect.potion_re_l": "Туманное зелье отражения",
+
+  "item.minecraft.potion.effect.potion_dp": "Зелье тьмы",
+  "item.minecraft.splash_potion.effect.potion_dp": "Взрывное зелье тьмы",
+  "item.minecraft.lingering_potion.effect.potion_dp": "Туманное зелье тьмы",
+  "item.minecraft.potion.effect.potion_dp_l": "Зелье тьмы",
+  "item.minecraft.splash_potion.effect.potion_dp_l": "Взрывное зелье тьмы",
+  "item.minecraft.lingering_potion.effect.potion_dp_l": "Туманное зелье тьмы",
+
+  "item.minecraft.potion.effect.potion_hap": "Зелье ускорения",
+  "item.minecraft.splash_potion.effect.potion_hap": "Взрывное зелье ускорения",
+  "item.minecraft.lingering_potion.effect.potion_hap": "Туманное зелье ускорения",
+  "item.minecraft.potion.effect.potion_hap_l": "Зелье ускорения",
+  "item.minecraft.splash_potion.effect.potion_hap_l": "Взрывное зелье ускорения",
+  "item.minecraft.lingering_potion.effect.potion_hap_l": "Туманное зелье ускорения",
+  "item.minecraft.potion.effect.potion_hap_s": "Зелье ускорения",
+  "item.minecraft.splash_potion.effect.potion_hap_s": "Взрывное зелье ускорения",
+  "item.minecraft.lingering_potion.effect.potion_hap_s": "Туманное зелье ускорения",
+
+  "item.minecraft.potion.effect.potion_espp": "Экстра усиленное зелье отравления",
+  "item.minecraft.splash_potion.effect.potion_espp": "Взрывное экстра усиленное зелье отравления",
+  "item.minecraft.lingering_potion.effect.potion_espp": "Туманное экстра усиленное зелье отравления",
+
+  "item.minecraft.potion.effect.potion_essp": "Экстра усиленное зелье силы",
+  "item.minecraft.splash_potion.effect.potion_essp": "Взрывное экстра усиленное зелье силы",
+  "item.minecraft.lingering_potion.effect.potion_essp": "Туманное экстра усиленное зелье силы",
+
+  "item.minecraft.potion.effect.potion_esswp": "Экстра усиленное зелье скорости",
+  "item.minecraft.splash_potion.effect.potion_esswp": "Взрывное экстра усиленное зелье скорости",
+  "item.minecraft.lingering_potion.effect.potion_esswp": "Туманное экстра усиленное зелье скорости",
+
+  "item.minecraft.potion.effect.potion_esrp": "Экстра усиленное зелье регенерации",
+  "item.minecraft.splash_potion.effect.potion_esrp": "Взрывное экстра усиленное зелье регенерации",
+  "item.minecraft.lingering_potion.effect.potion_esrp": "Туманное экстра усиленное зелье регенерации",
+
+  "item.minecraft.potion.effect.potion_eshp": "Экстра усиленное зелье урона",
+  "item.minecraft.splash_potion.effect.potion_eshp": "Взрывное экстра усиленное зелье урона",
+  "item.minecraft.lingering_potion.effect.potion_eshp": "Туманное экстра усиленное зелье урона",
+
+  "item.minecraft.potion.effect.potion_eshep": "Экстра усиленное зелье исцеления",
+  "item.minecraft.splash_potion.effect.potion_eshep": "Взрывное экстра усиленное зелье исцеления",
+  "item.minecraft.lingering_potion.effect.potion_eshep": "Туманное экстра усиленное зелье исцеления",
+
+  "item.minecraft.potion.effect.potion_eslp": "Экстра усиленное зелье прыжка",
+  "item.minecraft.splash_potion.effect.potion_eslp": "Взрывное экстра усиленное зелье прыжка",
+  "item.minecraft.lingering_potion.effect.potion_eslp": "Туманное экстра усиленное зелье прыжка",
+
+  "item.minecraft.tipped_arrow.effect.potion_npp": "Стрела незеритового картофеля",
+  "item.minecraft.tipped_arrow.effect.potion_npp_l": "Стрела незеритового картофеля",
+  "item.minecraft.tipped_arrow.effect.potion_npp_s": "ССтрела незеритового картофеля",
+
+  "item.minecraft.tipped_arrow.effect.potion_re": "Стрела отражения",
+  "item.minecraft.tipped_arrow.effect.potion_re_l": "Стрела отражения",
+
+  "item.minecraft.tipped_arrow.effect.potion_dp": "Стрела тьмы",
+  "item.minecraft.tipped_arrow.effect.potion_dp_l": "Стрела тьмы",
+
+  "item.minecraft.tipped_arrow.effect.potion_hap": "Стрела ускорения",
+  "item.minecraft.tipped_arrow.effect.potion_hap_l": "Стрела ускорения",
+  "item.minecraft.tipped_arrow.effect.potion_hap_s": "Стрела ускорения",
+
+  "item.minecraft.tipped_arrow.effect.potion_espp": "Стрела экстра усиленного отравления",
+  "item.minecraft.tipped_arrow.effect.potion_essp": "Стрела экстра усиленной силы",
+  "item.minecraft.tipped_arrow.effect.potion_esswp": "Стрела экстра усиленной скорости",
+  "item.minecraft.tipped_arrow.effect.potion_esrp": "Стрела экстра усиленной регенерации",
+  "item.minecraft.tipped_arrow.effect.potion_eshp": "Стрела экстра усиленного вреда",
+  "item.minecraft.tipped_arrow.effect.potion_eshep": "Стрела экстра усиленного исцеления",
+  "item.minecraft.tipped_arrow.effect.potion_eslp": "Стрела экстра усиленной прыгучести",
+
+  "effect.ppotatoex.effect_pr": "Картофельное усиление",
+  "effect.ppotatoex.effect_reflection": "Отражение",
+
   "block.ppotatoex.potato_block": "Блок картофеля",
-  "block.ppotatoex.ppotato_block": "Блок ядовитого картофеля"
+  "block.ppotatoex.ppotato_block": "Блок ядовитого картофеля",
+
+  "tooltip.ppotatoex.item_np.tooltip": "Легендарный картофель, наделённый силой Незерита.",
+  "tooltip.ppotatoex.item_bopp.tooltip": "Используется при создании предметов и варке зелий. Ну или вы можете его просто выпить.",
+  "tooltip.ppotatoex.item_ps.tooltip": "Какая глупость...",
+
+  "death.attack.reflect": "%1$s умер, получив весь свой урон обратно от %2$s",
+  "death.attack.reflect.item": "%1$s умер, получив весь свой урон обратно от %2$s, который использовал %3$s",
+  "item.minecraft.potion.effect.potion_eslp": "Extra Strong Leaping Potion",
+  "item.minecraft.splash_potion.effect.potion_eslp": "Splash Extra Strong Leaping Potion",
+  "item.minecraft.lingering_potion.effect.potion_eslp": "Lingering Extra Strong Leaping Potion",
+  "death.attack.reflect.player": "%1$s died by getting all his damage back from %2$s"
 }

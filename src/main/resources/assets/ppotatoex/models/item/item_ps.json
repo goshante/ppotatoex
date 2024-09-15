@@ -2,6 +2,6 @@
   "parent": "item/generated",
   "textures":
   {
-    "layer0": "ppotatoex:item/item_posv"
+    "layer0": "ppotatoex:item/item_ps"
   }
 }

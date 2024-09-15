@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+
+  "pattern":
+  [
+    "###",
+    "###",
+    "###"
+  ],
+
+  "key":
+  {
+    "#":
+    {
+      "item": "minecraft:poisonous_potato"
+    }
+  },
+
+  "result":
+  {
+    "item": "ppotatoex:ppotato_block",
+    "count": 1
+  }
+}

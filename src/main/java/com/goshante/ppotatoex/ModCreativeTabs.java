@@ -26,14 +26,13 @@ public class ModCreativeTabs
             output.accept(Items.POTATO);
             output.accept(Items.BAKED_POTATO);
             output.accept(Items.POISONOUS_POTATO);
+            output.accept(ModItems.item_GreatPoisonousPotato.get());
+            output.accept(ModItems.item_GreatPotato.get());
             output.accept(ModItems.item_BottleOfPotatoPoison.get());
             output.accept(ModItems.item_BottleOfPotatoPoison.get());
             output.accept(ModItems.item_GoldenGreatPotato.get());
             output.accept(ModItems.item_NetheritePotato.get());
-            output.accept(ModItems.item_NetheritePotatoPotion.get());
-            output.accept(ModItems.item_PotionOfStrengthV.get());
-            output.accept(ModItems.item_ExplosivePotionOfStrengthV.get());
-
+            output.accept(ModItems.item_PotatoShard.get());
             //Blocks
             output.accept(ModBlocks.block_PotatoBlock.get());
             output.accept(ModBlocks.block_PoisonousPotatoBlock.get());

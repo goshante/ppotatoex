@@ -1,0 +1,51 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+  [
+    "R*G",
+    "H#H",
+    "P@S"
+  ],
+
+  "key":
+  {
+    "R":
+    {
+      "item": "minecraft:redstone"
+    },
+    "*":
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    "@":
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    "G":
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    "H":
+    {
+      "item": "minecraft:honey_bottle"
+    },
+    "#":
+    {
+      "item": "minecraft:poisonous_potato"
+    },
+    "P":
+    {
+      "item": "minecraft:gunpowder"
+    },
+    "S":
+    {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result":
+  {
+    "item": "ppotatoex:item_gpp",
+    "count": 1
+  }
+}

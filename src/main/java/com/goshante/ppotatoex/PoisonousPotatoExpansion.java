@@ -1,10 +1,13 @@
 package com.goshante.ppotatoex;
 
 import com.goshante.ppotatoex.block.ModBlocks;
+import com.goshante.ppotatoex.effect.ModEffects;
 import com.goshante.ppotatoex.item.ModItems;
+import com.goshante.ppotatoex.potion.ModPotions;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.server.Bootstrap;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -46,7 +49,8 @@ public class PoisonousPotatoExpansion
         ModCreativeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-
+        ModEffects.register(modEventBus);
+        ModPotions.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -79,7 +83,7 @@ public class PoisonousPotatoExpansion
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            ModPotions.registerCustomPotionRecipes();
         }
     }
 }

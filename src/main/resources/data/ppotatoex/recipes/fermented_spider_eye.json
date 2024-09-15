@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients":
+  [
+    {
+      "item": "ppotatoex:item_bopp"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    }
+  ],
+  "result":
+  {
+    "item": "minecraft:fermented_spider_eye",
+    "count": 1
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+
+  "pattern":
+  [
+    "###",
+    "###",
+    "###"
+  ],
+
+  "key":
+  {
+    "#":
+    {
+      "item": "minecraft:potato"
+    }
+  },
+
+  "result":
+  {
+    "item": "ppotatoex:potato_block",
+    "count": 1
+  }
+}

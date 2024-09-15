@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern":
+  [
+    "GGG",
+    "G#G",
+    "GGG"
+  ],
+
+  "key":
+  {
+    "#":
+    {
+      "item": "ppotatoex:item_gp"
+    },
+    "G":
+    {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result":
+  {
+    "item": "ppotatoex:item_ggp",
+    "count": 1
+  }
+}
