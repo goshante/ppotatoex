@@ -4,41 +4,46 @@ import com.goshante.ppotatoex.PoisonousPotatoExpansion;
 import com.goshante.ppotatoex.effect.ModEffects;
 import com.goshante.ppotatoex.item.ModItems;
 import com.goshante.ppotatoex.util.etc;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.brewing.BrewingRecipeRegistry;
+import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
-@Mod.EventBusSubscriber
+import java.util.function.Supplier;
+
+@EventBusSubscriber
 public class ModPotions
 {
     public static final DeferredRegister<Potion> POTIONS =
-        DeferredRegister.create(ForgeRegistries.POTIONS, PoisonousPotatoExpansion.MOD_ID);
+        DeferredRegister.create(Registries.POTION, PoisonousPotatoExpansion.MOD_ID);
 
-    public static final RegistryObject<Potion> potion_ReflectionPotion =
+    public static final DeferredHolder<Potion,Potion> potion_ReflectionPotion =
             POTIONS.register("potion_re", () ->
             {
-                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_Reflection.get(), etc.TimeToTicks(7.5f), 0);
+                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_Reflection, etc.TimeToTicks(7.5f), 0);
                 Potion potion = new Potion(effect);
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_ReflectionPotionLonger =
+    public static final DeferredHolder<Potion,Potion> potion_ReflectionPotionLonger =
             POTIONS.register("potion_re_l", () ->
             {
-                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_Reflection.get(), etc.TimeToTicks(15), 0);
+                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_Reflection, etc.TimeToTicks(15), 0);
                 Potion potion = new Potion(effect);
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_DarknessPotion =
+    public static final DeferredHolder<Potion,Potion> potion_DarknessPotion =
             POTIONS.register("potion_dp", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.DARKNESS, etc.TimeToTicks(20), 0);
@@ -46,7 +51,7 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_DarknessPotionLonger =
+    public static final DeferredHolder<Potion,Potion> potion_DarknessPotionLonger =
             POTIONS.register("potion_dp_l", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.DARKNESS, etc.TimeToTicks(60), 0);
@@ -54,7 +59,7 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_HastePotion =
+    public static final DeferredHolder<Potion,Potion> potion_HastePotion =
             POTIONS.register("potion_hap", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED, etc.TimeToTicks(180), 2);
@@ -62,7 +67,7 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_HastePotionLonger =
+    public static final DeferredHolder<Potion,Potion> potion_HastePotionLonger =
             POTIONS.register("potion_hap_l", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED, etc.TimeToTicks(480), 2);
@@ -70,7 +75,7 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_HastePotionStronger =
+    public static final DeferredHolder<Potion,Potion> potion_HastePotionStronger =
             POTIONS.register("potion_hap_s", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED, etc.TimeToTicks(90), 3);
@@ -78,31 +83,31 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_NetheritePotatoPotion =
+    public static final DeferredHolder<Potion,Potion> potion_NetheritePotatoPotion =
             POTIONS.register("potion_npp", () ->
             {
-                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_PotatoReinforcement.get(), etc.TimeToTicks(20), 2);
+                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_PotatoReinforcement, etc.TimeToTicks(20), 2);
                 Potion potion = new Potion(effect);
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_NetheritePotatoPotion_Longer =
+    public static final DeferredHolder<Potion,Potion> potion_NetheritePotatoPotion_Longer =
             POTIONS.register("potion_npp_l", () ->
             {
-                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_PotatoReinforcement.get(), etc.TimeToTicks(60), 2);
+                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_PotatoReinforcement, etc.TimeToTicks(60), 2);
                 Potion potion = new Potion(effect);
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_NetheritePotatoPotion_Stronger =
+    public static final DeferredHolder<Potion,Potion> potion_NetheritePotatoPotion_Stronger =
             POTIONS.register("potion_npp_s", () ->
             {
-                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_PotatoReinforcement.get(), etc.TimeToTicks(12.5f), 3);
+                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_PotatoReinforcement, etc.TimeToTicks(12.5f), 3);
                 Potion potion = new Potion(effect);
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_ExtraStrongPoisonPotion =
+    public static final DeferredHolder<Potion,Potion> potion_ExtraStrongPoisonPotion =
             POTIONS.register("potion_espp", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.POISON, etc.TimeToTicks(45), 4);
@@ -110,7 +115,7 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_ExtraStrongStrengthPotion =
+    public static final DeferredHolder<Potion,Potion> potion_ExtraStrongStrengthPotion =
             POTIONS.register("potion_essp", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.DAMAGE_BOOST, etc.TimeToTicks(180), 4);
@@ -118,7 +123,7 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_ExtraStrongSwiftnessPotion =
+    public static final DeferredHolder<Potion,Potion> potion_ExtraStrongSwiftnessPotion =
             POTIONS.register("potion_esswp", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.MOVEMENT_SPEED, etc.TimeToTicks(180), 4);
@@ -126,7 +131,7 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_ExtraStrongRegenerationPotion =
+    public static final DeferredHolder<Potion,Potion> potion_ExtraStrongRegenerationPotion =
             POTIONS.register("potion_esrp", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.REGENERATION, etc.TimeToTicks(90), 4);
@@ -134,7 +139,7 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_ExtraStrongHarmingPotion =
+    public static final DeferredHolder<Potion,Potion> potion_ExtraStrongHarmingPotion =
             POTIONS.register("potion_eshp", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.HARM, 1, 4);
@@ -142,7 +147,7 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_ExtraStrongHealingPotion =
+    public static final DeferredHolder<Potion,Potion> potion_ExtraStrongHealingPotion =
             POTIONS.register("potion_eshep", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.HEAL, 1, 4);
@@ -150,7 +155,7 @@ public class ModPotions
                 return potion;
             });
 
-    public static final RegistryObject<Potion> potion_ExtraStrongLeapingPotion =
+    public static final DeferredHolder<Potion,Potion> potion_ExtraStrongLeapingPotion =
             POTIONS.register("potion_eslp", () ->
             {
                 MobEffectInstance effect = new MobEffectInstance(MobEffects.JUMP, etc.TimeToTicks(180), 4);
@@ -158,66 +163,71 @@ public class ModPotions
                 return potion;
             });
 
-
-    public static void registerCustomPotionRecipes()
+    @SubscribeEvent
+    public static void registerBrewingRecipes(RegisterBrewingRecipesEvent event)
     {
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_NetheritePotato.get(), ModPotions.potion_NetheritePotatoPotion.get()));
+        PotionBrewing.Builder builder = event.getBuilder();
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, Items.ECHO_SHARD, ModPotions.potion_DarknessPotion.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.THICK, ModItems.item_NetheritePotato.get(), ModPotions.potion_NetheritePotatoPotion));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_GoldenGreatPotato.get(), ModPotions.potion_ReflectionPotion.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.THICK, ModItems.item_NetheritePotato.get(), ModPotions.potion_NetheritePotatoPotion));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_GreatPotato.get(), ModPotions.potion_HastePotion.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.THICK, Items.ECHO_SHARD, ModPotions.potion_DarknessPotion));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_GreatPoisonousPotato.get(), Potions.EMPTY)
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.THICK, ModItems.item_GoldenGreatPotato.get(), ModPotions.potion_ReflectionPotion));
+
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.THICK, ModItems.item_GreatPotato.get(), ModPotions.potion_HastePotion));
+
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.THICK, ModItems.item_GreatPoisonousPotato.get(), Potions.WATER)
                 .outputCustomItem(ModItems.item_BottleOfPotatoPoison.get()));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
+        builder.addRecipe(new BrewingRecipeEx(
                 Potions.THICK, ModItems.item_BottleOfPotatoPoison.get(), Potions.POISON));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_NetheritePotatoPotion.get(), Items.REDSTONE, ModPotions.potion_NetheritePotatoPotion_Longer.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                ModPotions.potion_NetheritePotatoPotion, Items.REDSTONE, ModPotions.potion_NetheritePotatoPotion_Longer));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_NetheritePotatoPotion.get(), Items.GLOWSTONE_DUST, ModPotions.potion_NetheritePotatoPotion_Stronger.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                ModPotions.potion_NetheritePotatoPotion, Items.GLOWSTONE_DUST, ModPotions.potion_NetheritePotatoPotion_Stronger));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.POISON, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongPoisonPotion.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.POISON, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongPoisonPotion));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.STRENGTH, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongStrengthPotion.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.STRENGTH, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongStrengthPotion));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.SWIFTNESS, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongSwiftnessPotion.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.SWIFTNESS, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongSwiftnessPotion));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.REGENERATION, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongRegenerationPotion.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.REGENERATION, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongRegenerationPotion));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.HEALING, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongHealingPotion.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.HEALING, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongHealingPotion));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.HARMING, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongHarmingPotion.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.HARMING, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongHarmingPotion));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.LEAPING, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongLeapingPotion.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                Potions.LEAPING, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongLeapingPotion));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_DarknessPotion.get(), Items.REDSTONE, ModPotions.potion_DarknessPotionLonger.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                ModPotions.potion_DarknessPotion, Items.REDSTONE, ModPotions.potion_DarknessPotionLonger));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_HastePotion.get(), Items.REDSTONE, ModPotions.potion_HastePotionLonger.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                ModPotions.potion_HastePotion, Items.REDSTONE, ModPotions.potion_HastePotionLonger));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_HastePotion.get(), Items.GLOWSTONE_DUST, ModPotions.potion_HastePotionStronger.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                ModPotions.potion_HastePotion, Items.GLOWSTONE_DUST, ModPotions.potion_HastePotionStronger));
 
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_ReflectionPotion.get(), Items.REDSTONE, ModPotions.potion_ReflectionPotionLonger.get()));
+        builder.addRecipe(new BrewingRecipeEx(
+                ModPotions.potion_ReflectionPotion, Items.REDSTONE, ModPotions.potion_ReflectionPotionLonger));
     }
 
     public static void register(IEventBus eventBus)

@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-
+  "category": "misc",
   "pattern":
   [
     " N ",
@@ -21,7 +21,7 @@
   },
   "result":
   {
-    "item": "ppotatoex:item_np",
+    "id": "ppotatoex:item_np",
     "count": 1
   }
 }

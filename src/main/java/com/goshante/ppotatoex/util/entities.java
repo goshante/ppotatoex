@@ -2,6 +2,7 @@ package com.goshante.ppotatoex.util;
 
 import com.goshante.ppotatoex.damage_type.ModDamageTypes;
 import net.minecraft.client.OptionInstance;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -63,36 +64,36 @@ public class entities
         Collection<MobEffectInstance> effects = new ArrayList<>(entity.getActiveEffects()); //Create a copy
         for (MobEffectInstance effectInstance : effects)
         {
-            MobEffect effect = effectInstance.getEffect();
+            Holder<MobEffect> effect = effectInstance.getEffect();
             if (category == MobEffectCategory.All)
             {
-                if (!exceptions.contains(effect))
+                if (!exceptions.contains(effect.value()))
                     entity.removeEffect(effect);
                 continue;
             }
 
-            if (effect.getCategory() == net.minecraft.world.effect.MobEffectCategory.BENEFICIAL
+            if (effect.value().getCategory() == net.minecraft.world.effect.MobEffectCategory.BENEFICIAL
             && (category == MobEffectCategory.Positive
              || category == MobEffectCategory.PosAndNeg
              || category == MobEffectCategory.PosAndNeu))
             {
-                if (!exceptions.contains(effect))
+                if (!exceptions.contains(effect.value()))
                     entity.removeEffect(effect);
             }
-            else if (effect.getCategory() == net.minecraft.world.effect.MobEffectCategory.HARMFUL
+            else if (effect.value().getCategory() == net.minecraft.world.effect.MobEffectCategory.HARMFUL
                     && (category == MobEffectCategory.Negative
                     || category == MobEffectCategory.PosAndNeg
                     || category == MobEffectCategory.NegAndNeu))
             {
-                if (!exceptions.contains(effect))
+                if (!exceptions.contains(effect.value()))
                     entity.removeEffect(effect);
             }
-            else if (effect.getCategory() == net.minecraft.world.effect.MobEffectCategory.NEUTRAL
+            else if (effect.value().getCategory() == net.minecraft.world.effect.MobEffectCategory.NEUTRAL
                     && (category == MobEffectCategory.Neutral
                     || category == MobEffectCategory.PosAndNeu
                     || category == MobEffectCategory.NegAndNeu))
             {
-                if (!exceptions.contains(effect))
+                if (!exceptions.contains(effect.value()))
                     entity.removeEffect(effect);
             }
         }

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 75,
+  "experience": 5,
+  "ingredient":
+  {
+    "item": "ppotatoex:item_gpp"
+  },
+  "result":
+  {
+    "count": 1,
+    "id": "ppotatoex:item_gp"
+  }
+}

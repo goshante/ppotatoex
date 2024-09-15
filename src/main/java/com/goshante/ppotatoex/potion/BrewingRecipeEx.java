@@ -1,22 +1,23 @@
 package com.goshante.ppotatoex.potion;
 
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraftforge.common.brewing.IBrewingRecipe;
+import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
+import org.jetbrains.annotations.NotNull;
 
 public class BrewingRecipeEx implements IBrewingRecipe
 {
-    private final Potion input;
+    private final Holder<Potion> input;
     private final Item ingredient;
-    private Potion output;
+    private Holder<Potion> output;
     private Item outputItem = null; //If not null - brewing result will be this item instead of potion
 
-    public BrewingRecipeEx(Potion input, Item ingredient, Potion output)
+    public BrewingRecipeEx(Holder<Potion> input, Item ingredient, Holder<Potion> output)
     {
         this.input = input;
         this.ingredient = ingredient;
@@ -25,7 +26,7 @@ public class BrewingRecipeEx implements IBrewingRecipe
 
     public BrewingRecipeEx outputCustomItem(Item item)
     {
-        this.output = Potions.EMPTY;
+        this.output = Potions.WATER;
         this.outputItem = item;
         return this;
     }
@@ -33,7 +34,12 @@ public class BrewingRecipeEx implements IBrewingRecipe
     @Override
     public boolean isInput(ItemStack input)
     {
-        return PotionUtils.getPotion(input) == this.input;
+        PotionContents pc = input.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
+        if (pc != null && pc.potion().isPresent())
+        {
+            return pc.potion().get().value() == this.input.value();
+        }
+        return false;
     }
 
     @Override
@@ -43,7 +49,7 @@ public class BrewingRecipeEx implements IBrewingRecipe
     }
 
     @Override
-    public ItemStack getOutput(ItemStack input, ItemStack ingredient)
+    public @NotNull ItemStack getOutput(ItemStack input, ItemStack ingredient)
     {
         if(!this.isInput(input) || !this.isIngredient(ingredient))
         {
@@ -51,8 +57,7 @@ public class BrewingRecipeEx implements IBrewingRecipe
         }
 
         ItemStack itemStack = new ItemStack(input.getItem());
-        itemStack.setTag(new CompoundTag());
-        PotionUtils.setPotion(itemStack, this.output);
+        itemStack.set(DataComponents.POTION_CONTENTS, new PotionContents(output));
         if (outputItem != null)
             return new ItemStack(outputItem);
         return itemStack;

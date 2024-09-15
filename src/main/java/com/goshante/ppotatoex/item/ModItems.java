@@ -1,38 +1,31 @@
 package com.goshante.ppotatoex.item;
 
 import com.goshante.ppotatoex.PoisonousPotatoExpansion;
-import com.goshante.ppotatoex.block.BlockEx;
 import com.goshante.ppotatoex.util.etc;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 public class ModItems
 {
-    public static final DeferredRegister<Item> ITEMS =
-        DeferredRegister.create(ForgeRegistries.ITEMS, PoisonousPotatoExpansion.MOD_ID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(PoisonousPotatoExpansion.MOD_ID);
 
-    private static <T extends ItemEx> RegistryObject<T> registerItem(
+    private static <T extends ItemEx> DeferredItem<T> registerItem(
             String name,
             Supplier<ItemEx.Properties> propsSupplier,
             BiFunction<ItemEx.Properties, String, T> itemFactory)
     {
 
-        RegistryObject<T> item = ITEMS.register(name, () ->
+        DeferredItem<T> item = ITEMS.register(name, () ->
         {
             ItemEx.Properties props = propsSupplier.get();
             return itemFactory.apply(props, name);
@@ -42,14 +35,14 @@ public class ModItems
     }
 
 
-    public static final RegistryObject<ItemEx> item_GreatPoisonousPotato =
+    public static final DeferredItem<ItemEx> item_GreatPoisonousPotato =
             registerItem("item_gpp",
                     () ->
                     {
                         ItemEx.Properties props = new ItemEx.Properties();
                         props.food(new FoodProperties.Builder()
                                 .nutrition(4)
-                                .saturationMod(0.5f)
+                                .saturationModifier(0.5f)
                                 .effect(() -> new MobEffectInstance(MobEffects.POISON, etc.TimeToTicks(15), 3), 1)
                                 .build());
                         props.rarity(Rarity.UNCOMMON);
@@ -61,7 +54,7 @@ public class ModItems
                         return item;
                     });
 
-    public static final RegistryObject<ItemEx> item_PotatoShard =
+    public static final DeferredItem<ItemEx> item_PotatoShard =
             registerItem("item_ps",
                     () ->
                     {
@@ -81,13 +74,13 @@ public class ModItems
                         return item;
                     });
 
-    public static final RegistryObject<ItemEx> item_GreatPotato =
+    public static final DeferredItem<ItemEx> item_GreatPotato =
             registerItem("item_gp",
                     () -> {
                         ItemEx.Properties props = new ItemEx.Properties();
                         props.food(new FoodProperties.Builder()
                                 .nutrition(6)
-                                .saturationMod(0.6f)
+                                .saturationModifier(0.6f)
                                 .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, etc.TimeToTicks(5), 0), 1)
                                 .build());
                         props.rarity(Rarity.RARE);
@@ -100,14 +93,14 @@ public class ModItems
                     }
             );
 
-    public static final RegistryObject<ItemEx> item_GoldenGreatPotato =
+    public static final DeferredItem<ItemEx> item_GoldenGreatPotato =
             registerItem("item_ggp",
                     () -> {
                         ItemEx.Properties props = new ItemEx.Properties();
                         props.food(new FoodProperties.Builder()
                                 .nutrition(10)
-                                .saturationMod(0.75f)
-                                .alwaysEat()
+                                .saturationModifier(0.75f)
+                                .alwaysEdible()
                                 .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, etc.TimeToTicks(5), 1), 1)
                                 .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, etc.TimeToTicks(3.5f), 1), 1)
                                 .build());
@@ -122,14 +115,14 @@ public class ModItems
                     }
             );
 
-    public static final RegistryObject<ItemEx> item_NetheritePotato =
+    public static final DeferredItem<ItemEx> item_NetheritePotato =
             registerItem("item_np",
                     () -> {
                         ItemEx.Properties props = new ItemEx.Properties();
                         props.food(new FoodProperties.Builder()
                                 .nutrition(20)
-                                .saturationMod(1.00f)
-                                .alwaysEat()
+                                .saturationModifier(1.00f)
+                                .alwaysEdible()
                                 .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, etc.TimeToTicks(10), 3), 1)
                                 .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, etc.TimeToTicks(10), 2), 1)
                                 .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, etc.TimeToTicks(25), 2), 1)
@@ -149,14 +142,14 @@ public class ModItems
                     }
             );
 
-    public static final RegistryObject<ItemEx> item_BottleOfPotatoPoison =
+    public static final DeferredItem<ItemEx> item_BottleOfPotatoPoison =
             registerItem("item_bopp",
                     () -> {
                         ItemEx.Properties props = new ItemEx.Properties();
                         props.food(new FoodProperties.Builder()
                                 .nutrition(0)
-                                .saturationMod(0.0f)
-                                .alwaysEat()
+                                .saturationModifier(0.0f)
+                                .alwaysEdible()
                                 .effect(() -> new MobEffectInstance(MobEffects.POISON, etc.TimeToTicks(15), 3), 1)
                                 .build());
                         props.durability(8);

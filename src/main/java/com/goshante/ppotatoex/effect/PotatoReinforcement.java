@@ -29,7 +29,7 @@ public class PotatoReinforcement extends MobEffectEx
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier)
+    public boolean applyEffectTick(LivingEntity entity, int amplifier)
     {
         float healBase = 0.1f;
         if (!entity.level().isClientSide())
@@ -38,11 +38,11 @@ public class PotatoReinforcement extends MobEffectEx
             entity.resetFallDistance();
             entities.RemoveEffects(entity, entities.MobEffectCategory.NegAndNeu);
         }
-        super.applyEffectTick(entity, amplifier);
+        return super.applyEffectTick(entity, amplifier);
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier)
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier)
     {
         return true;
     }

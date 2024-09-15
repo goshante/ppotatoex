@@ -2,6 +2,7 @@ package com.goshante.ppotatoex.block;
 
 import com.goshante.ppotatoex.util.log;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -31,12 +32,12 @@ public class BlockEx extends Block
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag)
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
     {
         if (UseTooltip)
         {
-            pTooltip.add(Component.translatable("tooltip.ppotatoex." + Name + ".tooltip"));
+            tooltipComponents.add(Component.translatable("tooltip.ppotatoex." + Name + ".tooltip"));
         }
-        super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-
+  "category": "misc",
   "pattern":
   [
     "R*G",
@@ -45,7 +45,7 @@
   },
   "result":
   {
-    "item": "ppotatoex:item_gpp",
+    "id": "ppotatoex:item_gpp",
     "count": 1
   }
 }

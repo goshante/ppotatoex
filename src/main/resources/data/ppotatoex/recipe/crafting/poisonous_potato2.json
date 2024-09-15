@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-
+  "category": "misc",
   "pattern":
   [
     " P ",
@@ -25,7 +25,7 @@
   },
   "result":
   {
-    "item": "minecraft:poisonous_potato",
+    "id": "minecraft:poisonous_potato",
     "count": 1
   }
 }

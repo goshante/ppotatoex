@@ -1,18 +1,21 @@
 package com.goshante.ppotatoex.item;
 
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ItemEx extends Item
 {
@@ -41,7 +44,7 @@ public class ItemEx extends Item
         Item CraftingReplacer = null;
         Item ConsumingReplacer = null;
         BookEnchantType_t BookEnchantType = BookEnchantType_t.ByDefault;
-        ArrayList<Enchantment> EnchantmentWhiteList;
+        ArrayList<ResourceKey<Enchantment>> EnchantmentWhiteList;
 
         public Properties()
         {
@@ -56,7 +59,7 @@ public class ItemEx extends Item
             return this;
         }
 
-        public ItemEx.Properties addEnchantmentToWhiteList(Enchantment enchantment)
+        public ItemEx.Properties addEnchantmentToWhiteList(ResourceKey<Enchantment> enchantment)
         {
             EnchantmentWhiteList.add(enchantment);
             return this;
@@ -111,7 +114,7 @@ public class ItemEx extends Item
     private final boolean RemoveEffectsOnEat;
     private final boolean PreventFromEnchantingOnTable;
     private final BookEnchantType_t BookEnchantType;
-    private final ArrayList<Enchantment> EnchantmentWhiteList;
+    private final ArrayList<ResourceKey<Enchantment>> EnchantmentWhiteList;
 
     private boolean UseTooltip = false;
     private Type ItemType = Type.Resource;
@@ -129,7 +132,7 @@ public class ItemEx extends Item
         this.ItemType = props.ItemType;
         this.PreventFromEnchantingOnTable = props.PreventFromEnchantingOnTable;
         this.BookEnchantType = props.BookEnchantType;
-        this.EnchantmentWhiteList = new ArrayList<Enchantment>(props.EnchantmentWhiteList);
+        this.EnchantmentWhiteList = new ArrayList<ResourceKey<Enchantment>>(props.EnchantmentWhiteList);
     }
 
     public String GetItemNameID()
@@ -171,7 +174,9 @@ public class ItemEx extends Item
         }
 
         ItemStack damagedStack = itemStack.copy();
-        if (damagedStack.hurt(1, random, null) && CraftingReplacer != null)
+        damagedStack.setDamageValue(damagedStack.getDamageValue() + 1);
+        boolean broken = damagedStack.getDamageValue() == damagedStack.getMaxDamage();
+        if (broken && CraftingReplacer != null)
             return new ItemStack(CraftingReplacer);
 
         return damagedStack;
@@ -187,12 +192,12 @@ public class ItemEx extends Item
     }
 
     @Override
-    public int getUseDuration(ItemStack pStack)
+    public int getUseDuration(ItemStack stack, LivingEntity entity)
     {
         if (ItemType == Type.Drink)
             return 32;
 
-        return super.getUseDuration(pStack);
+        return super.getUseDuration(stack, entity);
     }
 
     @Override
@@ -234,28 +239,29 @@ public class ItemEx extends Item
                 return false;
         }
 
-        Map<Enchantment, Integer> enchMap = EnchantmentHelper.getEnchantments(book);
-        boolean whitelistFail = false;
-        for (Map.Entry<Enchantment, Integer> entry : enchMap.entrySet())
+        ItemEnchantments enchantments = book.getComponents().get(DataComponents.STORED_ENCHANTMENTS);
+        if (enchantments == null || enchantments.entrySet().isEmpty())
+            return false;
+
+        Set<Object2IntMap.Entry<Holder<Enchantment>>> enchEntries = enchantments.entrySet();
+        for (Object2IntMap.Entry<Holder<Enchantment>> entry : enchEntries)
         {
-            Enchantment enchantment = entry.getKey();
-            if (!EnchantmentWhiteList.contains(enchantment))
-            {
-                whitelistFail = true;
-                break;
-            }
+            Holder<Enchantment> enchantmentHolder = entry.getKey();
+            if (!EnchantmentWhiteList.contains(enchantmentHolder.getKey()))
+                return false;
         }
-        return !whitelistFail;
+
+        return true;
     }
 
 
     @Override
-    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced)
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag)
     {
         if (UseTooltip)
         {
-            pTooltipComponents.add(Component.translatable("tooltip.ppotatoex." + Name + ".tooltip"));
+            tooltipComponents.add(Component.translatable("tooltip.ppotatoex." + Name + ".tooltip"));
         }
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

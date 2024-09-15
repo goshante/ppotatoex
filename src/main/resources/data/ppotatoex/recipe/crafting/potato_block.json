@@ -13,13 +13,13 @@
   {
     "#":
     {
-      "item": "minecraft:poisonous_potato"
+      "item": "minecraft:potato"
     }
   },
 
   "result":
   {
-    "item": "ppotatoex:ppotato_block",
+    "id": "ppotatoex:potato_block",
     "count": 1
   }
 }

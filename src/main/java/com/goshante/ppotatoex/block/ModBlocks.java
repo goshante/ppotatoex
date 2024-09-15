@@ -2,40 +2,34 @@ package com.goshante.ppotatoex.block;
 
 import com.goshante.ppotatoex.PoisonousPotatoExpansion;
 import com.goshante.ppotatoex.item.ModItems;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Instrument;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
-import javax.tools.Tool;
 import java.util.function.BiFunction;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class ModBlocks
 {
-    public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, PoisonousPotatoExpansion.MOD_ID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(PoisonousPotatoExpansion.MOD_ID);
 
-    private static <T extends Block> RegistryObject<BlockItem> registerBlockItem(String name, RegistryObject<T> block)
+    private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block)
     {
-        return ModItems.ITEMS.register(name, ()->new BlockItem(block.get(), new Item.Properties()));
+        ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
-    private static <T extends BlockEx> RegistryObject<T> registerBlock(
+    private static <T extends BlockEx> DeferredBlock<T> registerBlock(
             String name,
             Supplier<BlockBehaviour.Properties> propsSupplier,
             BiFunction<BlockBehaviour.Properties, String, T> blockFactory)
     {
 
-        RegistryObject<T> block = BLOCKS.register(name, () ->
+        DeferredBlock<T> block = BLOCKS.register(name, () ->
         {
             BlockBehaviour.Properties props = propsSupplier.get();
             return blockFactory.apply(props, name);
@@ -45,11 +39,11 @@ public class ModBlocks
         return block;
     }
 
-    public static final RegistryObject<BlockEx> block_PotatoBlock = registerBlock(
+    public static final DeferredBlock<BlockEx> block_PotatoBlock = registerBlock(
             "potato_block",
             () ->
             {
-                return BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS);
+                return BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD);
             },
             (props, name) ->
             {
@@ -58,11 +52,11 @@ public class ModBlocks
             }
     );
 
-    public static final RegistryObject<BlockEx> block_PoisonousPotatoBlock = registerBlock(
+    public static final DeferredBlock<BlockEx> block_PoisonousPotatoBlock = registerBlock(
             "ppotato_block",
             () ->
             {
-                return BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS);
+                return BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD);
             },
             (props, name) ->
             {
