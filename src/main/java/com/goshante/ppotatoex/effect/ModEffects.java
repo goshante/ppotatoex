@@ -36,6 +36,11 @@ public class ModEffects
         return new Reflection(MobEffectCategory.BENEFICIAL, 0x8F10FF);
     });
 
+    public static final DeferredHolder<MobEffect, Return> effect_Return = MOB_EFFECTS.register("effect_return", () ->
+    {
+        return new Return(MobEffectCategory.BENEFICIAL, 0xFF6666);
+    });
+
     @SubscribeEvent
     public static void onEffectRemoved(MobEffectEvent.Remove event)
     {
@@ -62,7 +67,7 @@ public class ModEffects
     public static void onEffectAdded(MobEffectEvent.Added event)
     {
         Holder<MobEffect> effect = Objects.requireNonNull(event.getEffectInstance()).getEffect();
-        if (effect.value() instanceof PotatoReinforcement)
+        if (effect.value() instanceof MobEffectEx)
         {
             MobEffectEx effectEx = (MobEffectEx)effect.value();
             effectEx.onEffectAdded(event.getEntity(), event.getEffectInstance().getAmplifier(), event.getEffectInstance().getDuration());

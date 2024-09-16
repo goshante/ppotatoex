@@ -1,6 +1,7 @@
 package com.goshante.ppotatoex.item;
 
 import com.goshante.ppotatoex.PoisonousPotatoExpansion;
+import com.goshante.ppotatoex.effect.ModEffects;
 import com.goshante.ppotatoex.util.etc;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -70,7 +71,7 @@ public class ModItems
                     (props, name) ->
                     {
                         ItemEx item = new ItemEx(props, name);
-                        item.setTooltip();
+                        item.setTooltipCount(1);
                         return item;
                     });
 
@@ -137,7 +138,7 @@ public class ModItems
                     (props, name) ->
                     {
                         ItemEx item = new ItemEx(props, name);
-                        item.setTooltip();
+                        item.setTooltipCount(1);
                         return item;
                     }
             );
@@ -165,7 +166,32 @@ public class ModItems
                     (props, name) ->
                     {
                         ItemEx item = new ItemEx(props, name);
-                        item.setTooltip();
+                        item.setTooltipCount(2);
+                        return item;
+                    }
+            );
+
+    public static final DeferredItem<ItemEx> item_PotionOfReturn =
+            registerItem("item_rp",
+                    () -> {
+                        ItemEx.Properties props = new ItemEx.Properties();
+                        props.food(new FoodProperties.Builder()
+                                .nutrition(0)
+                                .saturationModifier(0.0f)
+                                .alwaysEdible()
+                                .effect(() -> new MobEffectInstance(ModEffects.effect_Return, 0, 0), 1)
+                                .build());
+                        props.rarity(Rarity.EPIC);
+                        props.stacksTo(1);
+                        props.replaceAfterConsuming(Items.GLASS_BOTTLE);
+                        props.replaceAfterCrafting(Items.GLASS_BOTTLE);
+                        props.itemType(ItemEx.Type.Drink);
+                        return props;
+                    },
+                    (props, name) ->
+                    {
+                        ItemEx item = new ItemEx(props, name);
+                        item.setTooltipCount(3);
                         return item;
                     }
             );

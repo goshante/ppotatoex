@@ -6,11 +6,15 @@ import com.goshante.ppotatoex.effect.ModEffects;
 import com.goshante.ppotatoex.item.ModItems;
 import com.goshante.ppotatoex.potion.ModPotions;
 import com.goshante.ppotatoex.util.etc;
+import com.goshante.ppotatoex.util.player_death.DeathSaveData;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -20,6 +24,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.saveddata.SavedData;
+import net.minecraft.world.level.storage.DimensionDataStorage;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -44,7 +50,8 @@ public class PoisonousPotatoExpansion
 
     public static final String MOD_ID = "ppotatoex";
     private static final Logger LOGGER = LogUtils.getLogger();
-
+    public static MinecraftServer Server = null;
+    public static DeathSaveData PlayerDeath = null;
 
     public PoisonousPotatoExpansion(IEventBus modEventBus, ModContainer modContainer)
     {
@@ -77,6 +84,23 @@ public class PoisonousPotatoExpansion
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
+        Server = event.getServer();
+
+        if (PlayerDeath == null)
+        {
+            ServerLevel overworld = Server.overworld();
+            DimensionDataStorage storage = overworld.getDataStorage();
+
+            SavedData.Factory<DeathSaveData> factory = new SavedData.Factory<>(
+                    DeathSaveData::new,
+                    (tag, lookupProvider) -> DeathSaveData.load(tag),
+                    DataFixTypes.PLAYER
+            );
+
+            // Use the new method signature with the factory
+            PlayerDeath = storage.computeIfAbsent(factory, "playerDeathTable");
+        }
+
         LOGGER.info("PoisonousPotatoExpansion mod has loaded, version v" + etc.GetModVersion(MOD_ID));
     }
 

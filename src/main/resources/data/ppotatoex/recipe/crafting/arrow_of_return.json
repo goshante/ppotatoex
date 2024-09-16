@@ -4,16 +4,16 @@
 
   "pattern":
   [
-    " ^ ",
+    "^^^",
     "^#^",
-    " ^ "
+    "^^^"
   ],
 
   "key":
   {
     "#":
     {
-      "item": "ppotatoex:item_bopp"
+      "item": "ppotatoex:item_rp"
     },
     "^":
     {
@@ -24,12 +24,12 @@
   "result":
   {
     "id": "minecraft:tipped_arrow",
-    "count": 4,
+    "count": 8,
     "components":
     {
       "minecraft:potion_contents":
       {
-        "potion": "minecraft:poison"
+        "potion": "ppotatoex:potion_return"
       }
     }
   }

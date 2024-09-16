@@ -7,6 +7,7 @@
   "item.ppotatoex.item_np": "Незеритовый картофель",
   "item.ppotatoex.item_bopp": "Пузырёк с картофельным ядом",
   "item.ppotatoex.item_ps": "Картофельный Осколок",
+  "item.ppotatoex.item_rp": "Зелье возвращения",
 
   "item.minecraft.potion.effect.potion_npp": "Зелье из Незеритового картофеля",
   "item.minecraft.splash_potion.effect.potion_npp": "Взрывное зелье из Незеритового картофеля",
@@ -92,15 +93,25 @@
   "item.minecraft.tipped_arrow.effect.potion_eshep": "Стрела экстра усиленного исцеления",
   "item.minecraft.tipped_arrow.effect.potion_eslp": "Стрела экстра усиленной прыгучести",
 
+  "item.minecraft.potion.effect.potion_return": "Зелье возвращения",
+  "item.minecraft.splash_potion.effect.potion_return": "Взрывное зелье возвращения",
+  "item.minecraft.lingering_potion.effect.potion_return": "Туманное зелье возвращения",
+  "item.minecraft.tipped_arrow.effect.potion_return": "Стрела возвращения",
+
   "effect.ppotatoex.effect_pr": "Картофельное усиление",
   "effect.ppotatoex.effect_reflection": "Отражение",
+  "effect.ppotatoex.effect_return": "Возвращение",
 
   "block.ppotatoex.potato_block": "Блок картофеля",
   "block.ppotatoex.ppotato_block": "Блок ядовитого картофеля",
 
-  "tooltip.ppotatoex.item_np.tooltip": "Легендарный картофель, наделённый силой Незерита.",
-  "tooltip.ppotatoex.item_bopp.tooltip": "Используется при создании предметов и варке зелий. Ну или вы можете его просто выпить.",
-  "tooltip.ppotatoex.item_ps.tooltip": "Какая глупость...",
+  "tooltip.ppotatoex.item_np.tooltip.1": "Легендарный картофель, наделённый силой Незерита.",
+  "tooltip.ppotatoex.item_bopp.tooltip.1": "Используется при создании предметов и варке зелий.",
+  "tooltip.ppotatoex.item_bopp.tooltip.2": "Ну или вы можете его просто выпить.",
+  "tooltip.ppotatoex.item_ps.tooltip.1": "Какая глупость...",
+  "tooltip.ppotatoex.item_rp.tooltip.1": "Переносит выпившего на место последней смерти",
+  "tooltip.ppotatoex.item_rp.tooltip.2": "Вы чувствуете слабость после телепорта.",
+  "tooltip.ppotatoex.item_rp.tooltip.3": "Работает лишь раз за одну жизнь.",
 
   "death.attack.reflect": "%1$s умер, получив весь свой урон обратно от %2$s",
   "death.attack.reflect.item": "%1$s умер, получив весь свой урон обратно от %2$s, который использовал %3$s",

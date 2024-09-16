@@ -19,13 +19,16 @@ public class PotatoReinforcement extends MobEffectEx
     @Override
     public void onEffectAdded(LivingEntity entity, int amplifier, int duration)
     {
-        entities.RemoveEffects(entity, entities.MobEffectCategory.NegAndNeu, this);
-        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, amplifier));
-        entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, duration, amplifier));
-        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration, amplifier));
-        entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, duration * 3, 2));
-        entity.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, duration * 3, 0));
-        entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration * 3, 0));
+        if (!entity.level().isClientSide())
+        {
+            entities.RemoveEffects(entity, entities.MobEffectCategory.NegAndNeu, this);
+            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, amplifier));
+            entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, duration, amplifier));
+            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration, amplifier));
+            entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, duration * 3, 2));
+            entity.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, duration * 3, 0));
+            entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration * 3, 0));
+        }
     }
 
     @Override

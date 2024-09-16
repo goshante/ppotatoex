@@ -27,6 +27,14 @@ public class ModPotions
     public static final DeferredRegister<Potion> POTIONS =
         DeferredRegister.create(Registries.POTION, PoisonousPotatoExpansion.MOD_ID);
 
+    public static final DeferredHolder<Potion,Potion> potion_ReturnPotion =
+            POTIONS.register("potion_return", () ->
+            {
+                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_Return, 0, 0);
+                Potion potion = new Potion(effect);
+                return potion;
+            });
+
     public static final DeferredHolder<Potion,Potion> potion_ReflectionPotion =
             POTIONS.register("potion_re", () ->
             {
@@ -184,7 +192,7 @@ public class ModPotions
                 Potions.THICK, ModItems.item_GreatPotato.get(), ModPotions.potion_HastePotion));
 
         builder.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_GreatPoisonousPotato.get(), Potions.WATER)
+                Potions.THICK, ModItems.item_GreatPoisonousPotato.get(), Potions.POISON)
                 .outputCustomItem(ModItems.item_BottleOfPotatoPoison.get()));
 
         builder.addRecipe(new BrewingRecipeEx(
@@ -228,6 +236,10 @@ public class ModPotions
 
         builder.addRecipe(new BrewingRecipeEx(
                 ModPotions.potion_ReflectionPotion, Items.REDSTONE, ModPotions.potion_ReflectionPotionLonger));
+
+        builder.addRecipe(new BrewingRecipeEx(
+                ModPotions.potion_DarknessPotion, Items.FERMENTED_SPIDER_EYE, ModPotions.potion_ReturnPotion)
+                .outputCustomItem(ModItems.item_PotionOfReturn.get()));
     }
 
     public static void register(IEventBus eventBus)

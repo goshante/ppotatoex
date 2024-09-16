@@ -34,6 +34,7 @@ public class ModCreativeTabs
         output.accept(ModItems.item_GoldenGreatPotato.get());
         output.accept(ModItems.item_NetheritePotato.get());
         output.accept(ModItems.item_PotatoShard.get());
+        output.accept(ModItems.item_PotionOfReturn.get());
         //Blocks
         output.accept(ModBlocks.block_PotatoBlock.get());
         output.accept(ModBlocks.block_PoisonousPotatoBlock.get());
