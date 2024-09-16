@@ -12,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.datafix.DataFixTypes;
@@ -111,5 +112,10 @@ public class PoisonousPotatoExpansion
         public static void onClientSetup(FMLClientSetupEvent event)
         {
         }
+    }
+
+    public static ResourceLocation GetResourceLoc(String path)
+    {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 }
