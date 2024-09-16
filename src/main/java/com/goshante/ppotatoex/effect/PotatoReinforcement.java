@@ -42,7 +42,7 @@ public class PotatoReinforcement extends MobEffectEx
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier)
+    public boolean shouldApplyEffectTickThisTick(int pDuration, int pAmplifier)
     {
         return true;
     }

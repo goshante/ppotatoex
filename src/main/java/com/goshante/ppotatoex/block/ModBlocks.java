@@ -8,6 +8,7 @@ import net.minecraft.world.item.Instrument;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -49,7 +50,7 @@ public class ModBlocks
             "potato_block",
             () ->
             {
-                return BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS);
+                return BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD);
             },
             (props, name) ->
             {
@@ -62,7 +63,7 @@ public class ModBlocks
             "ppotato_block",
             () ->
             {
-                return BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS);
+                return BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD);
             },
             (props, name) ->
             {
