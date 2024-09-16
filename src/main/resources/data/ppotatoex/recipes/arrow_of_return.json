@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+
+  "pattern":
+  [
+    "^^^",
+    "^#^",
+    "^^^"
+  ],
+
+  "key":
+  {
+    "#":
+    {
+      "item": "ppotatoex:item_rp"
+    },
+    "^":
+    {
+      "item": "minecraft:arrow"
+    }
+  },
+
+  "result":
+  {
+    "item": "minecraft:tipped_arrow",
+    "count": 8,
+    "nbt": "{Potion:\"ppotatoex:potion_return\"}"
+  }
+}

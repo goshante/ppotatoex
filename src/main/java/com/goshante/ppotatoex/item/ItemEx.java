@@ -114,7 +114,7 @@ public class ItemEx extends Item
     private final BookEnchantType_t BookEnchantType;
     private final ArrayList<Enchantment> EnchantmentWhiteList;
 
-    private boolean UseTooltip = false;
+    private int TooltipCount = 0;
     private Type ItemType = Type.Resource;
     private Item CraftingReplacer = null;
     private Item ConsumingReplacer = null;
@@ -138,9 +138,9 @@ public class ItemEx extends Item
         return Name;
     }
 
-    public ItemEx setTooltip()
+    public ItemEx setTooltipCount(int count)
     {
-        this.UseTooltip = true;
+        this.TooltipCount = count;
         return this;
     }
 
@@ -169,7 +169,6 @@ public class ItemEx extends Item
                 return new ItemStack(CraftingReplacer);
             else
             {
-                log.write(log.level.Warning, "This should never happen, but it happened. Durability crafting is not applicable to stacked items.");
                 return super.getCraftingRemainingItem(itemStack);
             }
         }
@@ -188,7 +187,7 @@ public class ItemEx extends Item
     @Override
     public boolean hasCraftingRemainingItem(ItemStack stack)
     {
-        if (!UseDurabilityCrafting)
+        if (CraftingReplacer == null)
             return super.hasCraftingRemainingItem(stack);
 
         return true;
@@ -260,9 +259,12 @@ public class ItemEx extends Item
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced)
     {
-        if (UseTooltip)
+        if (TooltipCount > 0)
         {
-            pTooltipComponents.add(Component.translatable("tooltip.ppotatoex." + Name + ".tooltip"));
+            for (int i = 0; i < TooltipCount; i++)
+            {
+                pTooltipComponents.add(Component.translatable("tooltip.ppotatoex." + Name + ".tooltip." + String.valueOf(i + 1)));
+            }
         }
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
