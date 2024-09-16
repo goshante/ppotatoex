@@ -1,5 +1,6 @@
 package com.goshante.ppotatoex.item;
 
+import com.goshante.ppotatoex.util.log;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -167,12 +168,19 @@ public class ItemEx extends Item
             if (itemStack.getMaxStackSize() == 1 && CraftingReplacer != null)
                 return new ItemStack(CraftingReplacer);
             else
+            {
+                log.write(log.level.Warning, "This should never happen, but it happened. Durability crafting is not applicable to stacked items.");
                 return super.getCraftingRemainingItem(itemStack);
+            }
         }
 
         ItemStack damagedStack = itemStack.copy();
-        if (damagedStack.hurt(1, random, null) && CraftingReplacer != null)
-            return new ItemStack(CraftingReplacer);
+        boolean broken = damagedStack.hurt(1, random, null);
+        if (broken)
+            damagedStack = ItemStack.EMPTY;
+
+        if (broken && CraftingReplacer != null)
+            damagedStack = new ItemStack(CraftingReplacer);
 
         return damagedStack;
     }

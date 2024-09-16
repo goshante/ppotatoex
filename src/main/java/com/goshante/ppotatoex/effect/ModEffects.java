@@ -27,7 +27,7 @@ public class ModEffects
 
     public static final RegistryObject<MobEffect> effect_PotatoReinforcement = MOB_EFFECTS.register("effect_pr", () ->
     {
-        return new PotatoReinforcement(MobEffectCategory.BENEFICIAL, 0x141414);
+        return new PotatoReinforcement(MobEffectCategory.BENEFICIAL, 0x515151);
     });
 
     public static final RegistryObject<MobEffect> effect_Reflection = MOB_EFFECTS.register("effect_reflection", () ->
