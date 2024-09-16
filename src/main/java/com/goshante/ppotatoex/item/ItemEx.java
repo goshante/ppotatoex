@@ -1,5 +1,6 @@
 package com.goshante.ppotatoex.item;
 
+import com.goshante.ppotatoex.util.log;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import java.util.ArrayList;
@@ -167,17 +169,41 @@ public class ItemEx extends Item
             if (CraftingReplacer == null)
                 return super.getCraftingRemainingItem(itemStack);
 
-            if (itemStack.getMaxStackSize() == 1 && CraftingReplacer != null)
+            if (itemStack.getMaxStackSize() == 1)
                 return new ItemStack(CraftingReplacer);
             else
+            {
+                log.write(log.level.Warning, "This should never happen, but it happened. Durability crafting is not applicable to stacked items.");
                 return super.getCraftingRemainingItem(itemStack);
+            }
+        }
+
+        //Imlpementation of Unbreaking enchantment for crafting
+        int currentDurabilityDamage = 1;
+        ItemEnchantments enchantments = itemStack.getComponents().get(DataComponents.ENCHANTMENTS);
+        Set<Object2IntMap.Entry<Holder<Enchantment>>> enchEntries = enchantments.entrySet();
+        for (Object2IntMap.Entry<Holder<Enchantment>> entry : enchEntries)
+        {
+            Holder<Enchantment> enchantmentHolder = entry.getKey();
+            if (enchantmentHolder.getKey() == Enchantments.UNBREAKING)
+            {
+                int randomNumber = random.nextInt(100) + 1;
+                int enchLevel = entry.getIntValue();
+                if (randomNumber <= (50 + (13 * (enchLevel - 1))))
+                    currentDurabilityDamage = 0;
+                break;
+            }
         }
 
         ItemStack damagedStack = itemStack.copy();
-        damagedStack.setDamageValue(damagedStack.getDamageValue() + 1);
-        boolean broken = damagedStack.getDamageValue() == damagedStack.getMaxDamage();
+        damagedStack.setDamageValue(damagedStack.getDamageValue() + currentDurabilityDamage);
+        boolean broken = damagedStack.getDamageValue() >= damagedStack.getMaxDamage();
+
+        if (broken)
+            damagedStack = ItemStack.EMPTY;
+
         if (broken && CraftingReplacer != null)
-            return new ItemStack(CraftingReplacer);
+            damagedStack = new ItemStack(CraftingReplacer);
 
         return damagedStack;
     }

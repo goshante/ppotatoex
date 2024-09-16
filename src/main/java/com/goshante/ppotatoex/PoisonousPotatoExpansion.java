@@ -5,6 +5,7 @@ import com.goshante.ppotatoex.datagen.ModDatagen;
 import com.goshante.ppotatoex.effect.ModEffects;
 import com.goshante.ppotatoex.item.ModItems;
 import com.goshante.ppotatoex.potion.ModPotions;
+import com.goshante.ppotatoex.util.etc;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -76,7 +77,7 @@ public class PoisonousPotatoExpansion
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
-        LOGGER.info("PoisonousPotatoExpansion has launched, version v1.0");
+        LOGGER.info("PoisonousPotatoExpansion mod has loaded, version v" + etc.GetModVersion(MOD_ID));
     }
 
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
