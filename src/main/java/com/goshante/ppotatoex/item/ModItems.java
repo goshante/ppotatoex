@@ -191,6 +191,7 @@ public class ModItems
                         props.rarity(Rarity.EPIC);
                         props.stacksTo(1);
                         props.replaceAfterConsuming(Items.GLASS_BOTTLE);
+                        props.replaceAfterCrafting(Items.GLASS_BOTTLE);
                         props.itemType(ItemEx.Type.Drink);
                         return props;
                     },

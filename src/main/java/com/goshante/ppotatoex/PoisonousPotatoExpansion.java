@@ -8,6 +8,8 @@ import com.goshante.ppotatoex.util.player_death.DeathSaveData;
 import com.mojang.logging.LogUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.datafix.DataFixTypes;
+import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.storage.DimensionDataStorage;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -70,11 +72,14 @@ public class PoisonousPotatoExpansion
             ServerLevel overworld = Server.overworld();
             DimensionDataStorage storage = overworld.getDataStorage();
 
-            PlayerDeath = storage.computeIfAbsent(
-                    DeathSaveData::load,
+            SavedData.Factory<DeathSaveData> factory = new SavedData.Factory<>(
                     DeathSaveData::new,
-                    "playerDeathTable"
+                    DeathSaveData::load,
+                    DataFixTypes.PLAYER
             );
+
+            // Use the new method signature with the factory
+            PlayerDeath = storage.computeIfAbsent(factory, "playerDeathTable");
         }
 
         LOGGER.info("PoisonousPotatoExpansion mod has loaded, version v" + etc.GetModVersion(MOD_ID));

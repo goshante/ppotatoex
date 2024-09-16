@@ -25,6 +25,9 @@
   {
     "item": "minecraft:tipped_arrow",
     "count": 4,
-    "nbt": "{Potion:\"minecraft:poison\"}"
+    "nbt":
+    {
+      "Potion": "minecraft:poison"
+    }
   }
 }
