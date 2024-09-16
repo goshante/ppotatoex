@@ -4,7 +4,11 @@ import com.goshante.ppotatoex.block.ModBlocks;
 import com.goshante.ppotatoex.effect.ModEffects;
 import com.goshante.ppotatoex.item.ModItems;
 import com.goshante.ppotatoex.potion.ModPotions;
+import com.goshante.ppotatoex.util.player_death.DeathSaveData;
 import com.mojang.logging.LogUtils;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.storage.DimensionDataStorage;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -26,7 +30,8 @@ public class PoisonousPotatoExpansion
 
     public static final String MOD_ID = "ppotatoex";
     private static final Logger LOGGER = LogUtils.getLogger();
-
+    public static MinecraftServer Server = null;
+    public static DeathSaveData PlayerDeath = null;
 
     public PoisonousPotatoExpansion()
     {
@@ -58,13 +63,26 @@ public class PoisonousPotatoExpansion
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
+        Server = event.getServer();
+
+        if (PlayerDeath == null)
+        {
+            ServerLevel overworld = Server.overworld();
+            DimensionDataStorage storage = overworld.getDataStorage();
+
+            PlayerDeath = storage.computeIfAbsent(
+                    DeathSaveData::load,
+                    DeathSaveData::new,
+                    "playerDeathTable"
+            );
+        }
+
         LOGGER.info("PoisonousPotatoExpansion mod has loaded, version v" + etc.GetModVersion(MOD_ID));
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
-
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {

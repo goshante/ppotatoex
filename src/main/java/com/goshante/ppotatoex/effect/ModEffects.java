@@ -7,6 +7,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -35,6 +36,11 @@ public class ModEffects
         return new Reflection(MobEffectCategory.BENEFICIAL, 0x8F10FF);
     });
 
+    public static final RegistryObject<MobEffect> effect_Return = MOB_EFFECTS.register("effect_return", () ->
+    {
+        return new Return(MobEffectCategory.BENEFICIAL, 0xFF6666);
+    });
+
     @SubscribeEvent
     public static void onEffectRemoved(MobEffectEvent.Remove event)
     {
@@ -61,7 +67,7 @@ public class ModEffects
     public static void onEffectAdded(MobEffectEvent.Added event)
     {
         MobEffect effect = Objects.requireNonNull(event.getEffectInstance()).getEffect();
-        if (effect instanceof PotatoReinforcement)
+        if (effect instanceof MobEffectEx)
         {
             MobEffectEx effectEx = (MobEffectEx)effect;
             effectEx.onEffectAdded(event.getEntity(), event.getEffectInstance().getAmplifier(), event.getEffectInstance().getDuration());

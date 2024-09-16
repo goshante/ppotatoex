@@ -7,6 +7,7 @@
   "item.ppotatoex.item_np": "Netherite Potato",
   "item.ppotatoex.item_bopp": "Bottle of Potato Poison",
   "item.ppotatoex.item_ps": "Potato Shard",
+  "item.ppotatoex.item_rp": "Potion of Return",
 
   "item.minecraft.potion.effect.potion_npp": "Potion of Netherite Potato",
   "item.minecraft.splash_potion.effect.potion_npp": "Splash Potion of Netherite Potato",
@@ -92,15 +93,24 @@
   "item.minecraft.tipped_arrow.effect.potion_eshep": "Arrow of Extra Strong Healing",
   "item.minecraft.tipped_arrow.effect.potion_eslp": "Arrow of Extra Strong Leaping",
 
+  "item.minecraft.potion.effect.potion_return": "Potion of Return",
+  "item.minecraft.splash_potion.effect.potion_return": "Splash Potion of Return",
+  "item.minecraft.lingering_potion.effect.potion_return": "Lingering Potion of Return",
+  "item.minecraft.tipped_arrow.effect.potion_return": "Arrow of Return",
+
   "effect.ppotatoex.effect_pr": "Potato Reinforcement",
   "effect.ppotatoex.effect_reflection": "Reflection",
 
   "block.ppotatoex.potato_block": "Potato Block",
   "block.ppotatoex.ppotato_block": "Poisonous Potato Block",
 
-  "tooltip.ppotatoex.item_np.tooltip": "The Legendary potato imbued with a power of a Netherite.",
-  "tooltip.ppotatoex.item_bopp.tooltip": "Useful in crafting, potion brewing or you can just drink it.",
-  "tooltip.ppotatoex.item_ps.tooltip": "What a stupidity...",
+  "tooltip.ppotatoex.item_np.tooltip.1": "The Legendary potato imbued with a power of a Netherite.",
+  "tooltip.ppotatoex.item_bopp.tooltip.1": "Useful in crafting and potion brewing.",
+  "tooltip.ppotatoex.item_bopp.tooltip.2": "Or you can just drink it.",
+  "tooltip.ppotatoex.item_ps.tooltip.1": "What a stupidity...",
+  "tooltip.ppotatoex.item_rp.tooltip.1": "Teleports you back to your latest death place.",
+  "tooltip.ppotatoex.item_rp.tooltip.2": "You feel weak after teleportation.",
+  "tooltip.ppotatoex.item_rp.tooltip.3": "Works only once per life.",
 
   "death.attack.reflect": "%1$s died by getting all his damage back from %2$s",
   "death.attack.reflect.player": "%1$s died by getting all his damage back from %2$s",

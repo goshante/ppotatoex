@@ -8,6 +8,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -158,6 +159,14 @@ public class ModPotions
                 return potion;
             });
 
+    public static final RegistryObject<Potion> potion_ReturnPotion =
+            POTIONS.register("potion_return", () ->
+            {
+                MobEffectInstance effect = new MobEffectInstance(ModEffects.effect_Return.get(), 0, 1);
+                Potion potion = new Potion(effect);
+                return potion;
+            });
+
 
     public static void registerCustomPotionRecipes()
     {
@@ -174,7 +183,7 @@ public class ModPotions
                 Potions.THICK, ModItems.item_GreatPotato.get(), ModPotions.potion_HastePotion.get()));
 
         BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_GreatPoisonousPotato.get(), Potions.EMPTY)
+                Potions.THICK, ModItems.item_GreatPoisonousPotato.get(), Potions.POISON)
                 .outputCustomItem(ModItems.item_BottleOfPotatoPoison.get()));
 
         BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
@@ -218,6 +227,10 @@ public class ModPotions
 
         BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
                 ModPotions.potion_ReflectionPotion.get(), Items.REDSTONE, ModPotions.potion_ReflectionPotionLonger.get()));
+
+        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
+                ModPotions.potion_DarknessPotion.get(), Items.FERMENTED_SPIDER_EYE, ModPotions.potion_ReturnPotion.get())
+                .outputCustomItem(ModItems.item_PotionOfReturn.get()));
     }
 
     public static void register(IEventBus eventBus)
