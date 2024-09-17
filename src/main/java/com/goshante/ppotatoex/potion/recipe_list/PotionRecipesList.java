@@ -78,6 +78,9 @@ public class PotionRecipesList
                 ModPotions.potion_HastePotion, Items.GLOWSTONE_DUST, ModPotions.potion_HastePotionStronger));
 
         potions.add(new PotionFormula(
+                ModPotions.potion_HastePotion, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongHastePotion));
+
+        potions.add(new PotionFormula(
                 ModPotions.potion_ReflectionPotion, Items.REDSTONE, ModPotions.potion_ReflectionPotionLonger));
 
         potions.add(new PotionFormula(

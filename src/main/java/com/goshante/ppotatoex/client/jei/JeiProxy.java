@@ -22,7 +22,7 @@ import net.minecraft.world.item.alchemy.PotionContents;
 @JeiPlugin
 public class JeiProxy implements IModPlugin
 {
-    public static final ResourceLocation ID = PoisonousPotatoExpansion.GetResourceLoc(PoisonousPotatoExpansion.MOD_ID);
+    public static final ResourceLocation ID = PoisonousPotatoExpansion.GetResourceLoc(PoisonousPotatoExpansion.MOD_ID, false);
 
     @Override
     public ResourceLocation getPluginUid()
@@ -60,6 +60,6 @@ public class JeiProxy implements IModPlugin
                 list,
                 PotionContents.createItemStack(Items.POTION, inputPotion),
                 outputPotion,
-                PoisonousPotatoExpansion.GetResourceLoc(outputPotion.getItem().getDescriptionId()));
+                PoisonousPotatoExpansion.GetResourceLoc(outputPotion.getItem().getDescriptionId(), false));
     }
 }

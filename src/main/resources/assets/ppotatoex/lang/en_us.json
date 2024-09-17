@@ -63,6 +63,10 @@
   "item.minecraft.splash_potion.effect.potion_eshp": "Splash Extra Strong Potion of Harming",
   "item.minecraft.lingering_potion.effect.potion_eshp": "Lingering Extra Strong Potion of Harming",
 
+  "item.minecraft.potion.effect.potion_eshap": "Extra Strong Potion of Haste",
+  "item.minecraft.splash_potion.effect.potion_eshap": "Splash Extra Strong Potion of Haste",
+  "item.minecraft.lingering_potion.effect.potion_eshap": "Lingering Extra Strong Potion of Haste",
+
   "item.minecraft.potion.effect.potion_eshep": "Extra Strong Potion of Healing",
   "item.minecraft.splash_potion.effect.potion_eshep": "Splash Extra Strong Potion of Healing",
   "item.minecraft.lingering_potion.effect.potion_eshep": "Lingering Extra Strong Potion of Healing",
