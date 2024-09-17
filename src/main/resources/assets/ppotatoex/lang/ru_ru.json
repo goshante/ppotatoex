@@ -63,6 +63,10 @@
   "item.minecraft.splash_potion.effect.potion_eshp": "Взрывное экстра усиленное зелье урона",
   "item.minecraft.lingering_potion.effect.potion_eshp": "Туманное экстра усиленное зелье урона",
 
+  "item.minecraft.potion.effect.potion_eshap": "Экстра усиленное зелье ускорения",
+  "item.minecraft.splash_potion.effect.potion_eshap": "Взрывное экстра усиленное зелье ускорения",
+  "item.minecraft.lingering_potion.effect.potion_eshap": "Туманное экстра усиленное зелье ускорения",
+
   "item.minecraft.potion.effect.potion_eshep": "Экстра усиленное зелье исцеления",
   "item.minecraft.splash_potion.effect.potion_eshep": "Взрывное экстра усиленное зелье исцеления",
   "item.minecraft.lingering_potion.effect.potion_eshep": "Туманное экстра усиленное зелье исцеления",

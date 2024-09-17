@@ -59,7 +59,7 @@ public class ModPotions
     public static final RegistryObject<Potion> potion_HastePotion =
             POTIONS.register("potion_hap", () ->
             {
-                MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED, etc.TimeToTicks(180), 2);
+                MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED, etc.TimeToTicks(180), 0);
                 Potion potion = new Potion(effect);
                 return potion;
             });
@@ -67,7 +67,7 @@ public class ModPotions
     public static final RegistryObject<Potion> potion_HastePotionLonger =
             POTIONS.register("potion_hap_l", () ->
             {
-                MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED, etc.TimeToTicks(480), 2);
+                MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED, etc.TimeToTicks(480), 0);
                 Potion potion = new Potion(effect);
                 return potion;
             });
@@ -75,7 +75,15 @@ public class ModPotions
     public static final RegistryObject<Potion> potion_HastePotionStronger =
             POTIONS.register("potion_hap_s", () ->
             {
-                MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED, etc.TimeToTicks(90), 3);
+                MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED, etc.TimeToTicks(90), 1);
+                Potion potion = new Potion(effect);
+                return potion;
+            });
+
+    public static final RegistryObject<Potion> potion_ExtraStrongHastePotion =
+            POTIONS.register("potion_eshap", () ->
+            {
+                MobEffectInstance effect = new MobEffectInstance(MobEffects.DIG_SPEED, etc.TimeToTicks(180), 2);
                 Potion potion = new Potion(effect);
                 return potion;
             });
@@ -174,7 +182,7 @@ public class ModPotions
         PotionRecipesList.instance().EnumerateRecipes((formula)->
         {
             BrewingRecipeEx recipe = new BrewingRecipeEx(
-                formula.Input, formula.Catalyst, formula.Output);
+                    formula.Input, formula.Catalyst, formula.Output);
             if (formula.CustomOutputItem != null)
                 recipe.outputCustomItem(formula.CustomOutputItem);
             BrewingRecipeRegistry.addRecipe(recipe);
