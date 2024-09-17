@@ -6,6 +6,7 @@ import com.goshante.ppotatoex.item.ModItems;
 import com.goshante.ppotatoex.potion.ModPotions;
 import com.goshante.ppotatoex.util.player_death.DeathSaveData;
 import com.mojang.logging.LogUtils;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.storage.DimensionDataStorage;
@@ -89,5 +90,10 @@ public class PoisonousPotatoExpansion
         {
             ModPotions.registerCustomPotionRecipes();
         }
+    }
+
+    public static ResourceLocation GetResourceLoc(String path)
+    {
+        return new ResourceLocation(MOD_ID, path);
     }
 }
