@@ -24,9 +24,6 @@ public class PotionRecipesList
                 Potions.THICK, ModItems.item_NetheritePotato.get(), ModPotions.potion_NetheritePotatoPotion));
 
         potions.add(new PotionFormula(
-                Potions.THICK, ModItems.item_NetheritePotato.get(), ModPotions.potion_NetheritePotatoPotion));
-
-        potions.add(new PotionFormula(
                 Potions.THICK, Items.ECHO_SHARD, ModPotions.potion_DarknessPotion));
 
         potions.add(new PotionFormula(

@@ -209,6 +209,10 @@ publishing {
     }
 }
 
+jar {
+    archiveFileName = "${project.name}-v${mod_version}_neoforge_${minecraft_version}.jar"
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
