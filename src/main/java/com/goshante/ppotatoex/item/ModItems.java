@@ -32,7 +32,6 @@ public class ModItems
             Supplier<ItemEx.Properties> propsSupplier,
             BiFunction<ItemEx.Properties, String, T> itemFactory)
     {
-
         RegistryObject<T> item = ITEMS.register(name, () ->
         {
             ItemEx.Properties props = propsSupplier.get();

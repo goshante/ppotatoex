@@ -3,6 +3,7 @@ package com.goshante.ppotatoex.potion;
 import com.goshante.ppotatoex.PoisonousPotatoExpansion;
 import com.goshante.ppotatoex.effect.ModEffects;
 import com.goshante.ppotatoex.item.ModItems;
+import com.goshante.ppotatoex.potion.recipe_list.PotionRecipesList;
 import com.goshante.ppotatoex.util.etc;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -170,67 +171,14 @@ public class ModPotions
 
     public static void registerCustomPotionRecipes()
     {
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_NetheritePotato.get(), ModPotions.potion_NetheritePotatoPotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, Items.ECHO_SHARD, ModPotions.potion_DarknessPotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_GoldenGreatPotato.get(), ModPotions.potion_ReflectionPotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_GreatPotato.get(), ModPotions.potion_HastePotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_GreatPoisonousPotato.get(), Potions.POISON)
-                .outputCustomItem(ModItems.item_BottleOfPotatoPoison.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.THICK, ModItems.item_BottleOfPotatoPoison.get(), Potions.POISON));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_NetheritePotatoPotion.get(), Items.REDSTONE, ModPotions.potion_NetheritePotatoPotion_Longer.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_NetheritePotatoPotion.get(), Items.GLOWSTONE_DUST, ModPotions.potion_NetheritePotatoPotion_Stronger.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.POISON, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongPoisonPotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.STRENGTH, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongStrengthPotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.SWIFTNESS, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongSwiftnessPotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.REGENERATION, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongRegenerationPotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.HEALING, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongHealingPotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.HARMING, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongHarmingPotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                Potions.LEAPING, ModItems.item_NetheritePotato.get(), ModPotions.potion_ExtraStrongLeapingPotion.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_DarknessPotion.get(), Items.REDSTONE, ModPotions.potion_DarknessPotionLonger.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_HastePotion.get(), Items.REDSTONE, ModPotions.potion_HastePotionLonger.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_HastePotion.get(), Items.GLOWSTONE_DUST, ModPotions.potion_HastePotionStronger.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_ReflectionPotion.get(), Items.REDSTONE, ModPotions.potion_ReflectionPotionLonger.get()));
-
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipeEx(
-                ModPotions.potion_DarknessPotion.get(), Items.FERMENTED_SPIDER_EYE, ModPotions.potion_ReturnPotion.get())
-                .outputCustomItem(ModItems.item_PotionOfReturn.get()));
+        PotionRecipesList.instance().EnumerateRecipes((formula)->
+        {
+            BrewingRecipeEx recipe = new BrewingRecipeEx(
+                formula.Input, formula.Catalyst, formula.Output);
+            if (formula.CustomOutputItem != null)
+                recipe.outputCustomItem(formula.CustomOutputItem);
+            BrewingRecipeRegistry.addRecipe(recipe);
+        });
     }
 
     public static void register(IEventBus eventBus)
