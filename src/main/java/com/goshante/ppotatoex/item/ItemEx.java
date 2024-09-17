@@ -2,12 +2,20 @@ package com.goshante.ppotatoex.item;
 
 import com.goshante.ppotatoex.util.log;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -16,7 +24,6 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class ItemEx extends Item
@@ -151,14 +158,37 @@ public class ItemEx extends Item
     @Override
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving)
     {
+        if (pEntityLiving instanceof ServerPlayer serverplayer)
+        {
+            CriteriaTriggers.CONSUME_ITEM.trigger(serverplayer, pStack);
+            serverplayer.awardStat(Stats.ITEM_USED.get(this));
+        }
+
         if (!pLevel.isClientSide && RemoveEffectsOnEat)
             pEntityLiving.removeAllEffects();
 
         ItemStack items = super.finishUsingItem(pStack, pLevel, pEntityLiving);
-        if (ConsumingReplacer != null)
+        if (ConsumingReplacer != null && pEntityLiving instanceof Player player && !player.isCreative())
             return new ItemStack(ConsumingReplacer);
         else
             return items;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
+    {
+        if (ItemType == Type.Drink)
+            return ItemUtils.startUsingInstantly(level, player, hand);
+        return super.use(level, player, hand);
+    }
+
+    @Override
+    public SoundEvent getEatingSound()
+    {
+        if (ItemType == Type.Drink)
+            return SoundEvents.GENERIC_DRINK;
+        else
+            return super.getEatingSound();
     }
 
     @Override
