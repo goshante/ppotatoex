@@ -25,6 +25,10 @@ public class Reflection extends MobEffectEx
          || source.is(DamageTypes.FELL_OUT_OF_WORLD)
          || source.is(DamageTypes.FLY_INTO_WALL)
          || source.is(DamageTypes.IN_WALL)
+         || source.is(DamageTypes.LAVA)
+         || source.is(DamageTypes.FREEZE)
+         || source.is(DamageTypes.SWEET_BERRY_BUSH)
+         || source.is(DamageTypes.EXPLOSION)
          || source.is(DamageTypes.BAD_RESPAWN_POINT)
          || source.is(DamageTypes.STARVE)
          || source.is(DamageTypes.THORNS)
@@ -34,6 +38,9 @@ public class Reflection extends MobEffectEx
         if (!EffectOwner.level().isClientSide())
         {
             EffectOwner.heal(damage);
+            if (source.getEntity() == null || source.getEntity().isRemoved() || !source.getEntity().isAlive())
+                return;
+
             if (!(source.getEntity() instanceof LivingEntity))
                 return;
 
