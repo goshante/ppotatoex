@@ -161,7 +161,7 @@ dependencies {
     // compile against the JEI API but do not include it at runtime
     compileOnly("mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}")
     // at runtime, use the full JEI jar for NeoForge
-    runtimeOnly("mezz.jei:jei-${mc_version}-neoforge:${jei_version}")
+    //runtimeOnly("mezz.jei:jei-${mc_version}-neoforge:${jei_version}")
 
     //emi
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
