@@ -3,9 +3,9 @@
   "category": "misc",
   "pattern":
   [
-    " N ",
+    "   ",
     "N#N",
-    " N "
+    "   "
   ],
 
   "key":
