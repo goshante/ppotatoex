@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -44,10 +45,13 @@ public class ModEffects
     @SubscribeEvent
     public static void onEffectRemoved(MobEffectEvent.Remove event)
     {
-        Holder<MobEffect> effect = event.getEffectInstance().getEffect();
-        if (effect.value() instanceof PotatoReinforcement)
+        MobEffectInstance inst = event.getEffectInstance();
+        if (inst == null)
+            return;
+
+        Holder<MobEffect> effect = inst.getEffect();
+        if (effect.value() instanceof PotatoReinforcement pr)
         {
-            PotatoReinforcement pr = (PotatoReinforcement)effect.value();
             pr.onEffectRemoved(event.getEntity(), event.getEffectInstance().getAmplifier(), false);
         }
     }
@@ -55,10 +59,13 @@ public class ModEffects
     @SubscribeEvent
     public static void onEffectExpired(MobEffectEvent.Expired event)
     {
-        Holder<MobEffect> effect = Objects.requireNonNull(event.getEffectInstance()).getEffect();
-        if (effect.value() instanceof MobEffectEx)
+        MobEffectInstance inst = event.getEffectInstance();
+        if (inst == null)
+            return;
+
+        Holder<MobEffect> effect = inst.getEffect();
+        if (effect.value() instanceof MobEffectEx effectEx)
         {
-            MobEffectEx effectEx = (MobEffectEx)effect.value();
             effectEx.onEffectRemoved(event.getEntity(), event.getEffectInstance().getAmplifier(), true);
         }
     }
@@ -66,10 +73,13 @@ public class ModEffects
     @SubscribeEvent
     public static void onEffectAdded(MobEffectEvent.Added event)
     {
-        Holder<MobEffect> effect = Objects.requireNonNull(event.getEffectInstance()).getEffect();
-        if (effect.value() instanceof MobEffectEx)
+        MobEffectInstance inst = event.getEffectInstance();
+        if (inst == null)
+            return;
+
+        Holder<MobEffect> effect = inst.getEffect();
+        if (effect.value() instanceof MobEffectEx effectEx)
         {
-            MobEffectEx effectEx = (MobEffectEx)effect.value();
             effectEx.onEffectAdded(event.getEntity(), event.getEffectInstance().getAmplifier(), event.getEffectInstance().getDuration());
         }
     }
@@ -88,9 +98,8 @@ public class ModEffects
                 ((MobEffectEx)effect).onTakeDamage(victim, source, amount);
         });
 
-        if (source.getEntity() instanceof LivingEntity)
+        if (source.getEntity() instanceof LivingEntity livingEntity)
         {
-            LivingEntity livingEntity = (LivingEntity)source.getEntity();
             entities.EnumerateEffects(livingEntity, mobEffectInstance ->
             {
                 MobEffect effect = mobEffectInstance.getEffect().value();

@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-public class MobEffectEx extends MobEffect
+abstract public class MobEffectEx extends MobEffect
 {
     public MobEffectEx(MobEffectCategory category, int color)
     {
