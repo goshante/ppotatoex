@@ -79,6 +79,8 @@ public class PoisonousPotatoExpansion
             );
         }
 
+        ModPotions.registerCustomPotionRecipes();
+
         LOGGER.info("PoisonousPotatoExpansion mod has loaded, version v" + etc.GetModVersion(MOD_ID));
     }
 
